@@ -21,5 +21,36 @@ superagent.get(cnodeUrl)
       topicUrls.push(href);
     });
     console.log(topicUrls);
-  });
+  
+    var ep = new eventproxy();
+
+    ep.after("all_html", topicUrls.length, function (topics) {
+      topics= topics.map(function (topicPair) {
+        var topicUrl = topicPair[0];
+        var topicHtml = topicPair[1];
+
+        var $ = cheerio.load(topicHtml);
+        
+        return ({
+          title: $('.topic_full_title').text().trim(),
+          href: topicUrl,
+          first_comment: $('.reply_content').eq(0).text().trim(),
+          
+        });
+      });
+      console.log('final result:');
+      console.log(topics);
+    });
+
+    topicUrls.forEach(function (topicUrl) {
+      superagent.get(topicUrl)
+        .end(function (err, res) {
+            if (err) {
+              console.error(err);
+            }
+            console.log('fetch' + topicUrl + 'successful!');
+            ep.emit("all_html", [topicUrl, res.text]);
+        });
+    });
+});
 
