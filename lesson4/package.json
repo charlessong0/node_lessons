@@ -1,0 +1,29 @@
+{
+  "name": "lesson4",
+  "version": "0.0.0",
+  "description": "asynchronous and concurrent",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/charlessong0/node_lessons.git"
+  },
+  "keywords": [
+    "asynchronous",
+    "and",
+    "concurrent"
+  ],
+  "author": "Charles Song (charlessong0@gmail.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/charlessong0/node_lessons/issues"
+  },
+  "homepage": "https://github.com/charlessong0/node_lessons#readme",
+  "dependencies": {
+    "cheerio": "^0.20.0",
+    "eventproxy": "^0.3.4",
+    "superagent": "^1.7.2"
+  }
+}
