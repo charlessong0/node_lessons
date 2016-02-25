@@ -13,9 +13,13 @@ console.log("the node server is listening at port 8888")
 
 var port = 8888;
 
-function start() {
+function start(handle, route) {
     var onRequest = function(request, response) {
-      console.log("this is the callback method!");
+      console.log("the server is started!");
+      var pathname = url.parse(request.url).pathname;
+      console.log("the user is requesting " + pathname);
+      
+      route(handle, pathname);
       response.writeHead(200, {"Content-type": "text/plain"});
       response.write("hello world!");
       response.end();

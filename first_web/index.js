@@ -1,3 +1,10 @@
 var server = require("./server");
+var route = require("./route");
+var requestHeaders = require("./requestHeaders");
 
-server.start();
+var handle = {};
+handle["/"] = requestHeaders.start;
+handle["/start"] = requestHeaders.start;
+handle["/upload"] = requestHeaders.upload;
+
+server.start(handle, route.route);
