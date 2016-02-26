@@ -20,17 +20,20 @@ function start(route, handle) {
       var pathname = url.parse(request.url).pathname;
       console.log("the user is requesting " + pathname);
 
+      /**
       request.setEncoding("utf8");
 
       request.addListener("data", function(postDataChunk) {
         postData += postDataChunk;
         console.log("received POST data chunk '" + postDataChunk + "'.");
       });
+      **/
 
-      request.addListener("end", function () {
-        route(handle, pathname, response, postData);
-      });
+//      request.addListener("end", function () {
+        route(handle, pathname, request, response, postData);
+//      });
       
+
       //route(handle, pathname, response);
       //response.writeHead(200, {"Content-type": "text/plain"});
       //response.write("hello world!");
