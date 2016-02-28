@@ -1,6 +1,6 @@
 module.exports = {
-  cookieSecret: 'Ironhack Platform',
+  cookieSecret: 'myblog',
   db: 'ironhack',
   host: 'localhost',
-  post: 27017
+  port: 27017
 };
